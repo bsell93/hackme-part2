@@ -6,7 +6,7 @@
 	//if the login form is submitted 
 	if (isset($_POST['submit'])) {
 		
-		$_POST['username'] = trim($_POST['username']);
+		$_POST['username'] = mysql_real_escape_string(trim($_POST['username']));
 		if(!$_POST['username'] | !$_POST['password']) {
 			die('<p>You did not fill in a required field.
 			Please go back and try again!</p>');

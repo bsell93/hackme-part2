@@ -6,7 +6,9 @@
 	//if the login form is submitted 
 	if (isset($_POST['post_submit'])) {
 		
-		$_POST['title'] = trim($_POST['title']);
+		$_COOKIE['hackme'] = mysqli_real_escape_string($_COOKIE['hackme']);
+		$_POST['message'] = mysqli_real_escape_string(trim($_POST['message']));
+		$_POST['title'] = mysqli_real_escape_string(trim($_POST['title']));
 		if(!$_POST['title'] | !$_POST['message']) {
 			include('header.php');
 			die('<p>You did not fill in a required field.

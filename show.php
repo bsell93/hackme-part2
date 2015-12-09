@@ -7,6 +7,7 @@
 	if (!isset($_GET['pid'])) {
 		
 		if (isset($_GET['delpid'])){
+			$_GET['delpid'] = mysql_real_escape_string($_GET['delpid']);
 			mysql_query("DELETE FROM threads WHERE id = '".$_GET[delpid]."'") or die(mysql_error());
 		}
 			header("Location: members.php");
@@ -28,6 +29,7 @@
 	}
 ?>
 <?php
+	$_GET[pid] = mysql_real_escape_string($_GET[pid]);
 	$threads = mysql_query("SELECT * FROM threads WHERE id = '".$_GET[pid]."'") or die(mysql_error());
 	while($thisthread = mysql_fetch_array( $threads )){
 ?>

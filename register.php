@@ -17,7 +17,9 @@
 		//if the registration form is submitted 
 		if (isset($_POST['submit'])) {
 			
-			$_POST['uname'] = trim($_POST['uname']);
+			$_POST['uname'] = mysqli_real_escape_string(trim($_POST['uname']));
+			$_POST['fname'] = mysqli_real_escape_string(trim($_POST['fname']));
+			$_POST['lname'] = mysqli_real_escape_string(trim($_POST['lname']));
 			if(!$_POST['uname'] | !$_POST['password'] |
 				!$_POST['fname'] | !$_POST['lname']) {
  				die('<p>You did not fill in a required field.
